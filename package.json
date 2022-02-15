@@ -1,14 +1,14 @@
 {
-  "name": "bedrock-module-template-http",
+  "name": "bedrock-service-context-store",
   "version": "0.0.1-0",
-  "description": "Bedrock HTTP API",
+  "description": "Bedrock Service Context Store",
   "main": "./lib",
   "scripts": {
     "lint": "eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http"
+    "url": "https://github.com/digitalbazaar/bedrock-service-context-store"
   },
   "keywords": [
     "bedrock"
@@ -19,22 +19,26 @@
     "url": "https://digitalbazaar.com"
   },
   "bugs": {
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http/issues"
+    "url": "https://github.com/digitalbazaar/bedrock-service-context-store/issues"
   },
-  "homepage": "https://github.com/digitalbazaar/bedrock-module-template-http",
+  "homepage": "https://github.com/digitalbazaar/bedrock-service-context-store",
   "dependencies": {
     "esm": "^3.2.25"
   },
   "peerDependencies": {
-    "bedrock": "^4.1.1",
-    "bedrock-express": "^3.2.0"
+    "bedrock": "^4.4.3",
+    "bedrock-express": "^6.3.0",
+    "bedrock-service-agent": "digitalbazaar/bedrock-service-agent#initial"
   },
   "directories": {
     "lib": "./lib"
   },
   "devDependencies": {
-    "eslint": "^7.14.0",
-    "eslint-config-digitalbazaar": "^2.6.1"
+    "eslint": "^7.32.0",
+    "eslint-config-digitalbazaar": "^2.8.0",
+    "eslint-plugin-jsdoc": "^28.6.1",
+    "jsdoc": "^3.6.4",
+    "jsdoc-to-markdown": "^6.0.1"
   },
   "engines": {
     "node": ">=12"
