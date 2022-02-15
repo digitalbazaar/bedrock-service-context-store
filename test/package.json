@@ -1,5 +1,5 @@
 {
-  "name": "bedrock-module-template-http-test",
+  "name": "bedrock-service-context-store-test",
   "version": "0.0.1-0",
   "private": true,
   "scripts": {
@@ -9,23 +9,44 @@
     "coverage-report": "nyc report"
   },
   "dependencies": {
-    "bedrock": "^4.1.1",
-    "bedrock-express": "^3.2.0",
+    "@digitalbazaar/edv-client": "^11.3.0",
+    "@digitalbazaar/webkms-client": "^9.2.0",
+    "bedrock": "^4.4.3",
+    "bedrock-app-identity": "^1.2.0",
+    "bedrock-did-context": "^2.0.3",
+    "bedrock-did-io": "^6.0.2",
+    "bedrock-edv-storage": "^11.5.3",
+    "bedrock-express": "^6.2.0",
     "bedrock-https-agent": "^2.0.0",
-    "bedrock-module-template-http": "file:..",
-    "bedrock-mongodb": "^8.2.0",
-    "bedrock-server": "^2.7.0",
-    "bedrock-test": "^5.3.2",
+    "bedrock-jsonld-document-loader": "^1.2.1",
+    "bedrock-kms": "^8.1.0",
+    "bedrock-kms-http": "^11.0.0",
+    "bedrock-ledger-context": "^21.0.1",
+    "bedrock-meter": "^1.0.0",
+    "bedrock-meter-http": "^4.0.0",
+    "bedrock-meter-usage-reporter": "^5.0.0",
+    "bedrock-mongodb": "^8.4.0",
+    "bedrock-package-manager": "^1.0.1",
+    "bedrock-security-context": "^5.0.0",
+    "bedrock-server": "^3.0.0",
+    "bedrock-service-agent": "github:digitalbazaar/bedrock-service-agent#initial",
+    "bedrock-service-context-store": "file:..",
+    "bedrock-service-core": "github:digitalbazaar/bedrock-service-core#initial",
+    "bedrock-ssm-mongodb": "^7.0.1",
+    "bedrock-test": "^6.0.0",
+    "bedrock-validation": "^5.4.1",
+    "bedrock-veres-one-context": "^12.0.0",
+    "bedrock-zcap-storage": "^5.0.0",
     "cross-env": "^7.0.3",
     "nyc": "^15.1.0"
   },
   "nyc": {
     "excludeNodeModules": false,
     "include": [
-      "node_modules/bedrock-module-template-http/**"
+      "node_modules/bedrock-service-context-store/**"
     ],
     "exclude": [
-      "node_modules/bedrock-module-template-http/node_modules/**"
+      "node_modules/bedrock-service-context-store/node_modules/**"
     ]
   }
 }
