@@ -16,6 +16,7 @@ require('bedrock-server');
 const {initializeServiceAgent} = require('bedrock-service-agent');
 require('bedrock-ssm-mongodb');
 require('bedrock-test');
+const {addRoutes} = require('bedrock-service-context-store');
 const {createService} = require('bedrock-service-core');
 
 const mockData = require('./mocha/mock.data');
@@ -41,7 +42,7 @@ bedrock.events.on('bedrock.init', async () => {
   handlers.setUseHandler({handler: ({meter} = {}) => ({meter})});
 
   // create `example` service
-  /*const service =*/await createService({
+  const service = await createService({
     serviceType: 'example',
     routePrefix: '/examples',
     storageCost: {
@@ -50,6 +51,10 @@ bedrock.events.on('bedrock.init', async () => {
     },
     // require these zcaps (by reference ID)
     zcapReferenceIds: ['edv', 'hmac', 'keyAgreementKey']
+  });
+
+  bedrock.events.on('bedrock-express.configure.routes', async app => {
+    await addRoutes({app, service});
   });
 });
 
