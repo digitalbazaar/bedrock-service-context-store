@@ -15,7 +15,7 @@ describe('HTTP API', () => {
   describe('service objects', () => {
     let capabilityAgent;
     const zcaps = {};
-    before(async () => {
+    beforeEach(async () => {
       const secret = '53ad64ce-8e1d-11ec-bb12-10bf48838a41';
       const handle = 'test';
       capabilityAgent = await CapabilityAgent.fromSecret({secret, handle});
@@ -134,6 +134,106 @@ describe('HTTP API', () => {
       err.data.type.should.equal('ValidationError');
       err.data.message.should.equal(
         'A validation error occured in the \'createContextBody\' validator.');
+    });
+    it('updates a context', async () => {
+      const config = await helpers.createConfig({capabilityAgent, zcaps});
+      const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
+
+      // insert `context`
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      const client = helpers.createZcapClient({capabilityAgent});
+      let url = `${config.id}/contexts`;
+      await client.write({
+        url, json: {id: contextId, context},
+        capability: rootZcap
+      });
+
+      // update `context`
+      context['@context'].term2 = 'https://test.example#term2';
+      url = `${url}/${encodeURIComponent(contextId)}`;
+      let err;
+      let response;
+      try {
+        response = await client.write({
+          url, json: {id: contextId, context, sequence: 1},
+          capability: rootZcap
+        });
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(response);
+      should.exist(response.data);
+      response.data.should.deep.equal({
+        id: 'https://test.example/v1',
+        context,
+        sequence: 1
+      });
+    });
+    it('fails to update a context with wrong sequence', async () => {
+      const config = await helpers.createConfig({capabilityAgent, zcaps});
+      const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
+
+      // insert `context`
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      const client = helpers.createZcapClient({capabilityAgent});
+      let url = `${config.id}/contexts`;
+      await client.write({
+        url, json: {id: contextId, context},
+        capability: rootZcap
+      });
+
+      // update `context`
+      context['@context'].term2 = 'https://test.example#term2';
+      url = `${url}/${encodeURIComponent(contextId)}`;
+      let err;
+      let response;
+      try {
+        response = await client.write({
+          url, json: {id: contextId, context, sequence: 10},
+          capability: rootZcap
+        });
+      } catch(e) {
+        err = e;
+      }
+      should.exist(err);
+      should.not.exist(response);
+      err.data.type.should.equal('InvalidStateError');
+    });
+    it('gets a context', async () => {
+      const config = await helpers.createConfig({capabilityAgent, zcaps});
+      const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
+
+      // insert `context`
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      const client = helpers.createZcapClient({capabilityAgent});
+      let url = `${config.id}/contexts`;
+      await client.write({
+        url, json: {id: contextId, context},
+        capability: rootZcap
+      });
+
+      url = `${url}/${encodeURIComponent(contextId)}`;
+      let err;
+      let response;
+      try {
+        response = await client.read({
+          url, capability: rootZcap
+        });
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(response);
+      should.exist(response.data);
+      response.data.should.deep.equal({
+        id: 'https://test.example/v1',
+        context,
+        sequence: 0
+      });
     });
   });
 });
