@@ -28,6 +28,8 @@ export const contextBody = {
           anyOf: [{
             type: 'string'
           }, {
+            type: 'object'
+          }, {
             type: 'array',
             minItems: 1,
             items: {
