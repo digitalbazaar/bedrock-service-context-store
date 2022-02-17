@@ -50,7 +50,16 @@ bedrock.events.on('bedrock.init', async () => {
       revocation: 1
     },
     // require these zcaps (by reference ID)
-    zcapReferenceIds: ['edv', 'hmac', 'keyAgreementKey']
+    zcapReferenceIds: [{
+      referenceId: 'edv',
+      required: true
+    }, {
+      referenceId: 'hmac',
+      required: true
+    }, {
+      referenceId: 'keyAgreementKey',
+      required: true
+    }]
   });
 
   bedrock.events.on('bedrock-express.configure.routes', async app => {
