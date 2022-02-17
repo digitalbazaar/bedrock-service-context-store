@@ -4,6 +4,8 @@
 'use strict';
 
 const {CapabilityAgent} = require('@digitalbazaar/webkms-client');
+const {createContextDocumentLoader} = require('bedrock-service-context-store');
+const {documentStores} = require('bedrock-service-agent');
 const helpers = require('./helpers');
 const {agent} = require('bedrock-https-agent');
 const {httpClient} = require('@digitalbazaar/http-client');
@@ -13,6 +15,7 @@ const {baseUrl} = mockData;
 
 describe('HTTP API', () => {
   describe('service objects', () => {
+    const serviceType = 'example';
     let capabilityAgent;
     const zcaps = {};
     beforeEach(async () => {
@@ -32,7 +35,6 @@ describe('HTTP API', () => {
       } = await helpers.createEdv({capabilityAgent, keystoreAgent});
 
       // get service agent to delegate to
-      const serviceType = 'example';
       const serviceAgentUrl =
         `${baseUrl}/service-agents/${encodeURIComponent(serviceType)}`;
       const {data: serviceAgent} = await httpClient.get(serviceAgentUrl, {
@@ -234,6 +236,86 @@ describe('HTTP API', () => {
         context,
         sequence: 0
       });
+    });
+    it('gets a context with a context document loader', async () => {
+      const config = await helpers.createConfig({capabilityAgent, zcaps});
+      const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
+
+      // insert `context`
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      const client = helpers.createZcapClient({capabilityAgent});
+      const url = `${config.id}/contexts`;
+      await client.write({
+        url, json: {id: contextId, context},
+        capability: rootZcap
+      });
+
+      const documentLoader = await createContextDocumentLoader({
+        config, serviceType
+      });
+
+      let err;
+      let result;
+      try {
+        result = await documentLoader(contextId);
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(result);
+      should.exist(result.documentUrl);
+      should.exist(result.document);
+      result.documentUrl.should.equal(contextId);
+      result.document.should.deep.equal(context);
+    });
+    it('fails to get a context with wrong meta type', async () => {
+      const config = await helpers.createConfig({capabilityAgent, zcaps});
+      const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
+
+      // insert `context`
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      const client = helpers.createZcapClient({capabilityAgent});
+      const url = `${config.id}/contexts`;
+      await client.write({
+        url, json: {id: contextId, context},
+        capability: rootZcap
+      });
+
+      // get context successfully
+      const documentLoader = await createContextDocumentLoader({
+        config, serviceType
+      });
+
+      let err;
+      let result;
+      try {
+        result = await documentLoader(contextId);
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(result);
+      should.exist(result.documentUrl);
+      should.exist(result.document);
+      result.documentUrl.should.equal(contextId);
+      result.document.should.deep.equal(context);
+
+      // now erroneously update context to new meta type
+      const docStore = await documentStores.get({config, serviceType});
+      await docStore.upsert({
+        content: {id: contextId, context},
+        meta: {type: 'different'}
+      });
+
+      try {
+        await documentLoader(contextId);
+      } catch(e) {
+        err = e;
+      }
+      should.exist(err);
+      err.name.should.equal('NotFoundError');
     });
   });
 });
