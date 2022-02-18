@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@digitalbazaar/edv-client": "^11.3.0",
+    "@digitalbazaar/ezcap": "^2.0.2",
     "@digitalbazaar/webkms-client": "^9.2.0",
     "bedrock": "^4.4.3",
     "bedrock-app-identity": "^1.2.0",
