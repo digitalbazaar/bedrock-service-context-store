@@ -1,5 +1,10 @@
 # bedrock-service-context-store ChangeLog
 
+## 3.0.0 - 2022-03-xx
+
+### Changed
+- **BREAKING**: Require `bedrock-service-core@3` peer dependency.
+
 ## 2.0.0 - 2022-03-01
 
 ### Changed

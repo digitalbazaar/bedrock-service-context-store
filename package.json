@@ -29,7 +29,7 @@
     "bedrock": "^4.4.3",
     "bedrock-express": "^6.3.0",
     "bedrock-service-agent": "^2.0.0",
-    "bedrock-service-core": "^2.0.0",
+    "bedrock-service-core": "^3.0.0",
     "bedrock-validation": "^5.5.0"
   },
   "directories": {
