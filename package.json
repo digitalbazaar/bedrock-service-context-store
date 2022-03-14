@@ -1,6 +1,6 @@
 {
   "name": "bedrock-service-context-store",
-  "version": "3.1.0",
+  "version": "3.1.1-0",
   "description": "Bedrock Service Context Store",
   "main": "./lib",
   "scripts": {
