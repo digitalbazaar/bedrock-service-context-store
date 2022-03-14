@@ -1,5 +1,12 @@
 # bedrock-service-context-store ChangeLog
 
+## 3.1.0 - 2022-03-TBD
+
+### Added
+- Add missing dependency `cors@2.8.5`.
+- Add missing dependencies `@digitalbazaar/ed25519-signature-2020@3.0` and
+  `@digitalbazaar/http-client@2.0.1` in test.
+
 ## 3.0.0 - 2022-03-11
 
 ### Changed
