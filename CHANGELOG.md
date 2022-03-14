@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 3.1.0 - 2022-03-TBD
+## 3.1.0 - 2022-03-14
 
 ### Added
 - Add missing dependency `cors@2.8.5`.
