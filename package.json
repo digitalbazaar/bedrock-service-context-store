@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-service-context-store",
   "dependencies": {
+    "cors": "^2.8.5",
     "esm": "^3.2.25"
   },
   "peerDependencies": {
