@@ -3,15 +3,15 @@
  */
 import * as bedrock from '@bedrock/core';
 import '@bedrock/ssm-mongodb';
+import {addRoutes} from '@bedrock/service-context-store';
+import {createService} from '@bedrock/service-core';
+import {initializeServiceAgent} from '@bedrock/service-agent';
 import {getServiceIdentities} from '@bedrock/app-identity';
 import '@bedrock/https-agent';
 import '@bedrock/meter';
 import '@bedrock/meter-usage-reporter';
-import {handlers} from '@bedrock/meter-usage-reporter';
+import {handlers} from '@bedrock/meter-http';
 import '@bedrock/server';
-import {createService} from '@bedrock/service-core';
-import {initializeServiceAgent} from '@bedrock/service-agent';
-import {addRoutes} from '@bedrock/service-context-store';
 import '@bedrock/kms';
 import '@bedrock/kms-http';
 import '@bedrock/edv-storage';
