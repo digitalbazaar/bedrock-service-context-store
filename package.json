@@ -27,11 +27,11 @@
     "cors": "^2.8.5"
   },
   "peerDependencies": {
-    "@bedrock/core": "^5.0.0",
-    "@bedrock/express": "^7.0.0",
-    "@bedrock/service-agent": "^3.0.0",
-    "@bedrock/service-core": "^4.0.0",
-    "@bedrock/validation": "^6.0.0"
+    "@bedrock/core": "^6.0.0",
+    "@bedrock/express": "^8.0.0",
+    "@bedrock/service-agent": "^4.0.0",
+    "@bedrock/service-core": "^5.0.0",
+    "@bedrock/validation": "^7.0.0"
   },
   "directories": {
     "lib": "./lib"
