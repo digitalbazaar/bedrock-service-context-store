@@ -1,5 +1,15 @@
 # bedrock-service-context-store ChangeLog
 
+## 5.0.0 - 2022-04-xx
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - `@bedrock/core@6`
+  - `@bedrock/express@8`
+  - `@bedrock/service-agent@4`
+  - `@bedrock/service-core@4`
+  - `@bedrock/validation@7`.
+
 ## 4.0.0 - 2022-04-05
 
 ### Changed
