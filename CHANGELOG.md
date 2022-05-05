@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 6.0.0 - 2022-05-xx
+## 6.0.0 - 2022-05-05
 
 ### Changed
 - **BREAKING**: Use `@bedrock/service-agent@5` with new EDV client using a
