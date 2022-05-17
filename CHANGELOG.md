@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 7.0.0 - 2022-05-xx
+## 7.0.0 - 2022-05-17
 
 ### Changed
 - **BREAKING**: Add `migration.migrateContexts` config that defaults to `true`
