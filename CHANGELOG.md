@@ -1,5 +1,13 @@
 # bedrock-service-context-store ChangeLog
 
+## 7.0.0 - 2022-05-xx
+
+### Changed
+- **BREAKING**: Add `migration.migrateContexts` config that defaults to `true`
+  and will cause all contexts associated with a service agent created prior
+  to a target migration date of May 24th (2022) to have old EDV context
+  documents updated to the new EDV blind attribute format.
+
 ## 6.0.0 - 2022-05-05
 
 ### Changed
