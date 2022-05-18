@@ -1,5 +1,11 @@
 # bedrock-service-context-store ChangeLog
 
+## 7.0.1 - 2022-05-xx
+
+### Fixed
+- Run migration on `bedrock-server.readinessCheck` to prevent it from being
+  terminated in deployments.
+
 ## 7.0.0 - 2022-05-17
 
 ### Changed
