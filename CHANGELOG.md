@@ -1,5 +1,10 @@
 # bedrock-service-context-store ChangeLog
 
+## 7.0.2 - 2022-05-xx
+
+### Fixed
+- Check `meta.type` on records to migrate not `content.type`.
+
 ## 7.0.1 - 2022-05-18
 
 ### Fixed
