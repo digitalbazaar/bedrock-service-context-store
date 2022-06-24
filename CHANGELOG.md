@@ -3,10 +3,11 @@
 ## 8.0.0 - 2022-xx-xx
 
 ### Changed
+- **BREAKING**: Require Node.js >=16.
 - Test on Node.js 18.x.
-- Require Node.js >=16.
 - Use `package.json` `files` field.
 - Lint module.
+- Update dependencies.
 
 ## 7.0.2 - 2022-05-18
 
