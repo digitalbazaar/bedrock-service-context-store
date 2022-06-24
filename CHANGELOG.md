@@ -3,6 +3,7 @@
 ## 7.0.3 - 2022-xx-xx
 
 ### Changed
+- Use `package.json` `files` field.
 - Lint module.
 
 ## 7.0.2 - 2022-05-18
