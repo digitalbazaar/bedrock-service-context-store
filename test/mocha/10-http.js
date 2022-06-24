@@ -4,7 +4,7 @@
 import * as helpers from './helpers.js';
 import {agent} from '@bedrock/https-agent';
 import {createContextDocumentLoader} from '@bedrock/service-context-store';
-import {createRequire} from 'module';
+import {createRequire} from 'node:module';
 import {documentStores} from '@bedrock/service-agent';
 const require = createRequire(import.meta.url);
 const {CapabilityAgent} = require('@digitalbazaar/webkms-client');

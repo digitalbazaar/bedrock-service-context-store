@@ -1,5 +1,10 @@
 # bedrock-service-context-store ChangeLog
 
+## 7.0.3 - 2022-xx-xx
+
+### Changed
+- Lint module.
+
 ## 7.0.2 - 2022-05-18
 
 ### Fixed
