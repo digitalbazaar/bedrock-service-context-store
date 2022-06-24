@@ -2,19 +2,20 @@
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
-import '@bedrock/ssm-mongodb';
 import {addRoutes} from '@bedrock/service-context-store';
 import {createService} from '@bedrock/service-core';
-import {initializeServiceAgent} from '@bedrock/service-agent';
 import {getServiceIdentities} from '@bedrock/app-identity';
-import '@bedrock/https-agent';
-import '@bedrock/meter';
-import '@bedrock/meter-usage-reporter';
 import {handlers} from '@bedrock/meter-http';
-import '@bedrock/server';
+import {initializeServiceAgent} from '@bedrock/service-agent';
+import '@bedrock/edv-storage';
+import '@bedrock/https-agent';
 import '@bedrock/kms';
 import '@bedrock/kms-http';
-import '@bedrock/edv-storage';
+import '@bedrock/meter';
+import '@bedrock/meter-usage-reporter';
+import '@bedrock/server';
+import '@bedrock/ssm-mongodb';
+
 import {mockData} from './mocha/mock.data.js';
 
 bedrock.events.on('bedrock.init', async () => {
