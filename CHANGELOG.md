@@ -1,8 +1,10 @@
 # bedrock-service-context-store ChangeLog
 
-## 7.0.3 - 2022-xx-xx
+## 8.0.0 - 2022-xx-xx
 
 ### Changed
+- Test on Node.js 18.x.
+- Require Node.js >=16.
 - Use `package.json` `files` field.
 - Lint module.
 
