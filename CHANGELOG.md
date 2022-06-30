@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 8.0.0 - 2022-06-30
+## 8.0.0 - 2022-xx-xx
 
 ### Changed
 - **BREAKING**: Require Node.js >=16.
@@ -8,6 +8,9 @@
 - Use `package.json` `files` field.
 - Lint module.
 - Update dependencies.
+- **BREAKING**: Update peer dependencies:
+  - `@bedrock/service-agent@6`
+  - `@bedrock/service-core@6`
 
 ## 7.0.2 - 2022-05-18
 
