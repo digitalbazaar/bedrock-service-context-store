@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 8.1.0 - 2022-07-xx
+## 8.1.0 - 2022-07-17
 
 ### Added
 - Enable support for OAuth2-based authz.
