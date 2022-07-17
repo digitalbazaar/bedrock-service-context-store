@@ -13,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 config.mocha.tests.push(path.join(__dirname, 'mocha'));
 
 // MongoDB
-config.mongodb.name = 'bedrock_service_agent_test';
+config.mongodb.name = 'bedrock_service_context_store_test';
 config.mongodb.dropCollections.onInit = true;
 config.mongodb.dropCollections.collections = [];
 // drop all collections on initialization
