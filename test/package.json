@@ -10,8 +10,8 @@
     "coverage-report": "c8 report"
   },
   "dependencies": {
-    "@bedrock/core": "^6.0.1",
     "@bedrock/app-identity": "^4.0.0",
+    "@bedrock/core": "^6.0.1",
     "@bedrock/did-context": "^4.0.0",
     "@bedrock/did-io": "^9.0.1",
     "@bedrock/edv-storage": "^16.0.0",
@@ -30,7 +30,7 @@
     "@bedrock/server": "^5.0.0",
     "@bedrock/service-agent": "^6.0.0",
     "@bedrock/service-context-store": "file:..",
-    "@bedrock/service-core": "^6.0.0",
+    "@bedrock/service-core": "^6.1.0",
     "@bedrock/ssm-mongodb": "^10.0.0",
     "@bedrock/test": "^8.0.5",
     "@bedrock/validation": "^7.0.0",
@@ -42,7 +42,8 @@
     "@digitalbazaar/http-client": "^3.2.0",
     "@digitalbazaar/webkms-client": "^11.0.0",
     "c8": "^7.11.3",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "jose": "^4.8.3"
   },
   "c8": {
     "excludeNodeModules": false,
