@@ -74,5 +74,15 @@ bedrock.events.on('bedrock.ready', async () => {
   await initializeServiceAgent({serviceType: 'example'});
 });
 
+// mock oauth2 authz server routes
+bedrock.events.on('bedrock-express.configure.routes', app => {
+  app.get(mockData.oauth2IssuerConfigRoute, (req, res) => {
+    res.json(mockData.oauth2Config);
+  });
+  app.get('/oauth2/jwks', (req, res) => {
+    res.json(mockData.jwks);
+  });
+});
+
 import '@bedrock/test';
 bedrock.start();
