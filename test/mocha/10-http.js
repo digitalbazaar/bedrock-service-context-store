@@ -115,6 +115,37 @@ describe('HTTP API', () => {
         sequence: 0
       });
     });
+    it('inserts a context w/oauth2', async () => {
+      const config = await helpers.createConfig(
+        {capabilityAgent, zcaps, oauth2: true});
+
+      // insert `context`
+      const accessToken = await helpers.getOAuth2AccessToken(
+        {configId: config.id, action: 'write', target: '/contexts'});
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      const url = `${config.id}/contexts`;
+
+      let err;
+      let response;
+      try {
+        response = await httpClient.post(url, {
+          agent,
+          headers: {authorization: `Bearer ${accessToken}`},
+          json: {id: contextId, context}
+        });
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(response);
+      should.exist(response.data);
+      response.data.should.deep.equal({
+        id: 'https://test.example/v1',
+        context,
+        sequence: 0
+      });
+    });
     it('throws error on no "context"', async () => {
       const config = await helpers.createConfig({capabilityAgent, zcaps});
       const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
@@ -171,6 +202,136 @@ describe('HTTP API', () => {
         context,
         sequence: 1
       });
+    });
+    it('updates a context w/oauth2 w/root scope', async () => {
+      const config = await helpers.createConfig(
+        {capabilityAgent, zcaps, oauth2: true});
+
+      // insert `context`
+      const accessToken = await helpers.getOAuth2AccessToken(
+        {configId: config.id, action: 'write', target: '/contexts'});
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      let url = `${config.id}/contexts`;
+      await httpClient.post(url, {
+        agent,
+        headers: {authorization: `Bearer ${accessToken}`},
+        json: {id: contextId, context}
+      });
+
+      // update `context`
+      context['@context'].term2 = 'https://test.example#term2';
+      url = `${url}/${encodeURIComponent(contextId)}`;
+      let err;
+      let response;
+      try {
+        response = await httpClient.post(url, {
+          agent,
+          headers: {authorization: `Bearer ${accessToken}`},
+          json: {id: contextId, context, sequence: 1}
+        });
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(response);
+      should.exist(response.data);
+      response.data.should.deep.equal({
+        id: 'https://test.example/v1',
+        context,
+        sequence: 1
+      });
+    });
+    it('updates a context w/oauth2 w/targeted scope', async () => {
+      const config = await helpers.createConfig(
+        {capabilityAgent, zcaps, oauth2: true});
+
+      // insert `context`
+      const accessToken = await helpers.getOAuth2AccessToken(
+        {configId: config.id, action: 'write', target: '/contexts'});
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      let url = `${config.id}/contexts`;
+      await httpClient.post(url, {
+        agent,
+        headers: {authorization: `Bearer ${accessToken}`},
+        json: {id: contextId, context}
+      });
+
+      // update `context`
+      context['@context'].term2 = 'https://test.example#term2';
+      url = `${url}/${encodeURIComponent(contextId)}`;
+      let err;
+      let response;
+      try {
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'write',
+          // use specific context target
+          target: `/contexts/${encodeURIComponent(contextId)}`
+        });
+        response = await httpClient.post(url, {
+          agent,
+          headers: {authorization: `Bearer ${accessToken}`},
+          json: {id: contextId, context, sequence: 1}
+        });
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(response);
+      should.exist(response.data);
+      response.data.should.deep.equal({
+        id: 'https://test.example/v1',
+        context,
+        sequence: 1
+      });
+    });
+    it('fails to update a context w/oauth2 w/wrong scope', async () => {
+      const config = await helpers.createConfig(
+        {capabilityAgent, zcaps, oauth2: true});
+
+      // insert `context`
+      const accessToken = await helpers.getOAuth2AccessToken(
+        {configId: config.id, action: 'write', target: '/contexts'});
+      const contextId = 'https://test.example/v1';
+      const context = {'@context': {term: 'https://test.example#term'}};
+      let url = `${config.id}/contexts`;
+      await httpClient.post(url, {
+        agent,
+        headers: {authorization: `Bearer ${accessToken}`},
+        json: {id: contextId, context}
+      });
+
+      // update `context`
+      context['@context'].term2 = 'https://test.example#term2';
+      url = `${url}/${encodeURIComponent(contextId)}`;
+      let err;
+      let response;
+      try {
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'write',
+          // wrong target
+          target: `/foo`
+        });
+        response = await httpClient.post(url, {
+          agent,
+          headers: {authorization: `Bearer ${accessToken}`},
+          json: {id: contextId, context, sequence: 1}
+        });
+      } catch(e) {
+        err = e;
+      }
+      should.exist(err);
+      should.not.exist(response);
+      err.status.should.equal(403);
+      err.data.type.should.equal('NotAllowedError');
+      should.exist(err.data.cause);
+      should.exist(err.data.cause.details);
+      should.exist(err.data.cause.details.code);
+      err.data.cause.details.code.should.equal(
+        'ERR_JWT_CLAIM_VALIDATION_FAILED');
+      should.exist(err.data.cause.details.claim);
+      err.data.cause.details.claim.should.equal('scope');
     });
     it('fails to update a context with wrong sequence', async () => {
       const config = await helpers.createConfig({capabilityAgent, zcaps});
