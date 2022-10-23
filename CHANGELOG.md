@@ -1,5 +1,13 @@
 # bedrock-service-context-store ChangeLog
 
+## 9.0.0 - 2022-10-xx
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - `@bedrock/service-core@7`.
+- **BREAKING**: See `@bedrock/service-core@7` for important config changes
+  and new peer dependency `@bedrock/oauth2-verifier@1`.
+
 ## 8.1.0 - 2022-07-17
 
 ### Added
