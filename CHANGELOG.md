@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 9.0.0 - 2022-10-xx
+## 9.0.0 - 2022-10-23
 
 ### Changed
 - **BREAKING**: Update peer deps:
