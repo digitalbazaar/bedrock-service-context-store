@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/service-context-store",
-  "version": "8.1.1-0",
+  "version": "9.0.0",
   "type": "module",
   "description": "Bedrock Service Context Store",
   "main": "./lib/index.js",
