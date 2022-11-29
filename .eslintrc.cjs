@@ -6,7 +6,8 @@ module.exports = {
   extends: [
     'digitalbazaar',
     'digitalbazaar/jsdoc',
-    'digitalbazaar/module'
+    'digitalbazaar/module',
+    'digitalbazaar/import'
   ],
   ignorePatterns: ['node_modules/'],
   rules: {
