@@ -1,5 +1,11 @@
 # bedrock-service-context-store ChangeLog
 
+## 10.0.0 -
+
+### Changed
+- **BREAKING**: Update peer deps: `@bedrock/service-core@8` & `@bedrock/service-agent@7`
+  to use newer mongodb driver.
+
 ## 9.0.0 - 2022-10-23
 
 ### Changed
