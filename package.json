@@ -33,8 +33,8 @@
   "peerDependencies": {
     "@bedrock/core": "^6.0.1",
     "@bedrock/express": "^8.0.0",
-    "@bedrock/service-agent": "^6.0.0",
-    "@bedrock/service-core": "^7.0.0",
+    "@bedrock/service-agent": "digitalbazaar/bedrock-service-agent#update-br-did-io",
+    "@bedrock/service-core": "^7.1.0",
     "@bedrock/validation": "^7.0.0"
   },
   "directories": {
