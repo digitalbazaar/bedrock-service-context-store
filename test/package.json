@@ -31,7 +31,7 @@
     "@bedrock/server": "^5.0.0",
     "@bedrock/service-agent": "digitalbazaar/bedrock-service-agent#update-br-did-io",
     "@bedrock/service-context-store": "file:..",
-    "@bedrock/service-core": "^7.0.0",
+    "@bedrock/service-core": "digitalbazaar/bedrock-service-core#update-br-did-io",
     "@bedrock/ssm-mongodb": "^10.0.0",
     "@bedrock/test": "^8.0.5",
     "@bedrock/validation": "^7.0.0",
