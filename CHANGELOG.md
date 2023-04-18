@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 10.0.0 - 2023-TBD
+## 10.0.0 - 2023-04-18
 
 ### Changed
 - **BREAKING**: Update peer deps:
