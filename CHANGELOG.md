@@ -1,5 +1,12 @@
 # bedrock-service-context-store ChangeLog
 
+## 10.0.0 - 2023-TBD
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - `@bedrock/service-agent@7.0`.
+  - `@bedrock/service-core@7.1`.
+
 ## 9.0.0 - 2022-10-23
 
 ### Changed
