@@ -5,7 +5,7 @@
 ### Changed
 - **BREAKING**: Update peer deps:
   - `@bedrock/service-agent@7.0`.
-  - `@bedrock/service-core@7.1`.
+  - `@bedrock/service-core@8.0`.
 
 ## 9.0.0 - 2022-10-23
 
