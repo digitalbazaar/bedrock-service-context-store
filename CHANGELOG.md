@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 11.0.0 - 2023-09-xx
+## 11.0.0 - 2023-09-18
 
 ### Changed
 - **BREAKING**: Drop support for Node.js < 18.
