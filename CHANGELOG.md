@@ -1,5 +1,13 @@
 # bedrock-service-context-store ChangeLog
 
+## 11.0.0 - 2023-09-xx
+
+### Changed
+- **BREAKING**: Drop support for Node.js < 18.
+- **BREAKING**: Update peer deps:
+  - Use `@bedrock/service-agent@8`. This version changes the
+    `documentStores.get` API. This version requires Node.js 18+.
+
 ## 10.0.0 - 2023-04-18
 
 ### Changed
