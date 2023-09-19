@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 11.0.1 - 2023-09-xx
+## 11.0.1 - 2023-09-19
 
 ### Fixed
 - Fix peer deps:
