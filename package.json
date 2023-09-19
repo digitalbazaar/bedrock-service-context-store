@@ -34,7 +34,7 @@
     "@bedrock/core": "^6.0.1",
     "@bedrock/express": "^8.0.0",
     "@bedrock/service-agent": "^8.0.0",
-    "@bedrock/service-core": "^8.0.0",
+    "@bedrock/service-core": "^9.0.0",
     "@bedrock/validation": "^7.0.0"
   },
   "directories": {
