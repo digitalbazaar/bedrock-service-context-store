@@ -5,6 +5,7 @@
 ### Fixed
 - Fix peer deps:
   - Use `@bedrock/service-core@9`.
+- Update test deps.
 
 ## 11.0.0 - 2023-09-18
 
