@@ -1,5 +1,11 @@
 # bedrock-service-context-store ChangeLog
 
+## 11.0.1 - 2023-09-xx
+
+### Fixed
+- Fix peer deps:
+  - Use `@bedrock/service-core@9`.
+
 ## 11.0.0 - 2023-09-18
 
 ### Changed
