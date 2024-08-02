@@ -6,6 +6,12 @@
 - **BREAKING**: Add missing peer deps:
   - `@bedrock/mongodb@10`.
 
+### Changed
+- **BREAKING**: Update peer deps:
+  - `@bedrock/service-agent@9`.
+  - `@bedrock/service-core@10`.
+- Update test and dev dependencies.
+
 ## 11.0.1 - 2023-09-19
 
 ### Fixed
