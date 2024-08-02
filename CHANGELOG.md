@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 12.0.0 - 2024-08-xx
+## 12.0.0 - 2024-08-01
 
 ### Added
 - **BREAKING**: Add missing peer deps:
