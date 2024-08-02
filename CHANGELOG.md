@@ -1,5 +1,11 @@
 # bedrock-service-context-store ChangeLog
 
+## 12.0.0 - 2024-08-xx
+
+### Added
+- **BREAKING**: Add missing peer deps:
+  - `@bedrock/mongodb@10`.
+
 ## 11.0.1 - 2023-09-19
 
 ### Fixed
