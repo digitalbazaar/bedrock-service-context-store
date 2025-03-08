@@ -165,7 +165,7 @@ describe('HTTP API', () => {
       should.not.exist(result);
       err.data.type.should.equal('ValidationError');
       err.data.message.should.equal(
-        'A validation error occured in the \'createContextBody\' validator.');
+        'A validation error occurred in the \'createContextBody\' validator.');
     });
     it('updates a context', async () => {
       const config = await helpers.createConfig({capabilityAgent, zcaps});
