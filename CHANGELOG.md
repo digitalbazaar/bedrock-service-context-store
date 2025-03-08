@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 13.0.0 - 2025-03-xx
+## 13.0.0 - 2025-03-08
 
 ### Changed
 - Update peer dependencies.
