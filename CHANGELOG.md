@@ -3,8 +3,11 @@
 ## 13.1.0 - 2025-mm-dd
 
 ### Added
-- Add `addCborLdRoutes` to include routes for enabling per-instance storage
+- Add `addCborldRoutes` to include routes for enabling per-instance storage
   and management of CBOR-LD registry entries.
+- Add `createCborldTypeTableLoader` to create CBOR-LD type table loader
+  functions that load CBOR-LD registry entry type tables from per-instance
+  document storage.
 
 ### Changed
 - Expose `addRoutes` as `addContextRoutes`. The export `addRoutes` is now

@@ -19,7 +19,7 @@ const cborldTypeTable = {
   }
 };
 
-export const cborLdRegistryEntryBody = {
+export const cborldRegistryEntryBody = {
   title: 'CBOR-LD Registry Entry Record',
   type: 'object',
   required: ['id', 'registryEntry'],
@@ -87,18 +87,18 @@ export const cborLdRegistryEntryBody = {
     }
   }
 };
-export const createCborLdRegistryEntryBody = {
-  ...cborLdRegistryEntryBody,
-  title: 'createCborLdRegistryEntryBody'
+export const createCborldRegistryEntryBody = {
+  ...cborldRegistryEntryBody,
+  title: 'createCborldRegistryEntryBody'
 };
-export const updateCborLdRegistryEntryBody = {
-  ...cborLdRegistryEntryBody,
+export const updateCborldRegistryEntryBody = {
+  ...cborldRegistryEntryBody,
   required: ['id', 'registryEntry', 'sequence'],
   properties: {
-    ...cborLdRegistryEntryBody.properties,
+    ...cborldRegistryEntryBody.properties,
     sequence
   },
-  title: 'updateCborLdRegistryEntryBody'
+  title: 'updateCborldRegistryEntryBody'
 };
 
 export const contextBody = {

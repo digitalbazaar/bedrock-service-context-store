@@ -2,16 +2,16 @@
  * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import * as helpers from './helpers.js';
+import {
+  CBORLD_REGISTRY_ENTRY_URN_PREFIX, createCborldTypeTableLoader
+} from '@bedrock/service-context-store';
 import {agent} from '@bedrock/https-agent';
 import {CapabilityAgent} from '@digitalbazaar/webkms-client';
-// FIXME: `createTypeTableLoader`
-import {createContextDocumentLoader} from '@bedrock/service-context-store';
 import {documentStores} from '@bedrock/service-agent';
 import {httpClient} from '@digitalbazaar/http-client';
 
 import {mockData} from './mock.data.js';
 
-const CBORLD_REGISTRY_ENTRY_PREFIX = 'urn:cborld:registry-entry:';
 const {baseUrl} = mockData;
 
 describe('CBOR-LD registry entry HTTP API', () => {
@@ -67,7 +67,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
 
     // insert `registryEntry`
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     const url = `${config.id}/cborld-registry-entries`;
 
@@ -94,7 +94,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
 
     // insert `registryEntry`
     const registryEntry = structuredClone(mockData.registryEntryArray);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     const url = `${config.id}/cborld-registry-entries`;
 
@@ -123,7 +123,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
 
     // insert `registryEntry`
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     const url = `${config.id}/cborld-registry-entries`;
 
@@ -157,7 +157,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
       target: '/cborld-registry-entries'
     });
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const url = `${config.id}/cborld-registry-entries`;
 
     let err;
@@ -184,7 +184,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
     const config = await helpers.createConfig({capabilityAgent, zcaps});
     const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
 
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     const url = `${config.id}/cborld-registry-entries`;
 
@@ -199,7 +199,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
     should.not.exist(result);
     err.data.type.should.equal('ValidationError');
     err.data.message.should.equal(
-      'A validation error occurred in the \'createCborLdRegistryEntryBody\' ' +
+      'A validation error occurred in the \'createCborldRegistryEntryBody\' ' +
       'validator.');
   });
   it('updates a registry entry', async () => {
@@ -208,7 +208,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
 
     // insert `registryEntry`
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     let url = `${config.id}/cborld-registry-entries`;
     await client.write({
@@ -249,7 +249,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
       target: '/cborld-registry-entries'
     });
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     let url = `${config.id}/cborld-registry-entries`;
     await httpClient.post(url, {
       agent,
@@ -291,7 +291,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
       target: '/cborld-registry-entries'
     });
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     let url = `${config.id}/cborld-registry-entries`;
     await httpClient.post(url, {
       agent,
@@ -338,7 +338,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
       target: '/cborld-registry-entries'
     });
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     let url = `${config.id}/cborld-registry-entries`;
     await httpClient.post(url, {
       agent,
@@ -383,7 +383,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
 
     // insert `registryEntry`
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     let url = `${config.id}/cborld-registry-entries`;
     await client.write({
@@ -414,7 +414,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
 
     // insert `registryEntry`
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     let url = `${config.id}/cborld-registry-entries`;
     await client.write({
@@ -441,13 +441,13 @@ describe('CBOR-LD registry entry HTTP API', () => {
       sequence: 0
     });
   });
-  it.skip('gets a registry entry with a type table loader', async () => {
+  it('gets an array registry entry w/ a type table loader', async () => {
     const config = await helpers.createConfig({capabilityAgent, zcaps});
     const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
 
     // insert `registryEntry`
-    const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const registryEntry = structuredClone(mockData.registryEntryArray);
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     const url = `${config.id}/cborld-registry-entries`;
     await client.write({
@@ -455,32 +455,65 @@ describe('CBOR-LD registry entry HTTP API', () => {
       capability: rootZcap
     });
 
-    const documentLoader = await createContextDocumentLoader({
+    const typeTableLoader = await createCborldTypeTableLoader({
       config, serviceType
     });
 
     let err;
     let result;
     try {
-      result = await documentLoader(id);
+      result = await typeTableLoader({registryEntryId: 10});
     } catch(e) {
       err = e;
     }
     assertNoError(err);
     should.exist(result);
-    should.exist(result.documentUrl);
-    should.exist(result.document);
-    // FIXME:
-    result.documentUrl.should.equal(id);
-    result.document.should.deep.equal(context);
+    result.should.be.instanceOf(Map);
+    const contextTypeTable = result.get('context');
+    contextTypeTable.should.be.instanceOf(Map);
+    Object.fromEntries(contextTypeTable.entries()).should.deep.equal(
+      registryEntry[0].table);
   });
-  it.skip('fails to get a registry entry with wrong meta type', async () => {
+  it('gets an object registry entry w/ a type table loader', async () => {
     const config = await helpers.createConfig({capabilityAgent, zcaps});
     const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
 
     // insert `registryEntry`
     const registryEntry = structuredClone(mockData.registryEntryObject);
-    const id = `${CBORLD_REGISTRY_ENTRY_PREFIX}10`;
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
+    const client = helpers.createZcapClient({capabilityAgent});
+    const url = `${config.id}/cborld-registry-entries`;
+    await client.write({
+      url, json: {id, registryEntry},
+      capability: rootZcap
+    });
+
+    const typeTableLoader = await createCborldTypeTableLoader({
+      config, serviceType
+    });
+
+    let err;
+    let result;
+    try {
+      result = await typeTableLoader({registryEntryId: 10});
+    } catch(e) {
+      err = e;
+    }
+    assertNoError(err);
+    should.exist(result);
+    result.should.be.instanceOf(Map);
+    const contextTypeTable = result.get('context');
+    contextTypeTable.should.be.instanceOf(Map);
+    Object.fromEntries(contextTypeTable.entries()).should.deep.equal(
+      registryEntry.context);
+  });
+  it('fails to get a registry entry with wrong meta type', async () => {
+    const config = await helpers.createConfig({capabilityAgent, zcaps});
+    const rootZcap = `urn:zcap:root:${encodeURIComponent(config.id)}`;
+
+    // insert `registryEntry`
+    const registryEntry = structuredClone(mockData.registryEntryObject);
+    const id = `${CBORLD_REGISTRY_ENTRY_URN_PREFIX}10`;
     const client = helpers.createZcapClient({capabilityAgent});
     const url = `${config.id}/cborld-registry-entries`;
     await client.write({
@@ -489,24 +522,24 @@ describe('CBOR-LD registry entry HTTP API', () => {
     });
 
     // get registry entry successfully
-    const documentLoader = await createContextDocumentLoader({
+    const typeTableLoader = await createCborldTypeTableLoader({
       config, serviceType
     });
 
     let err;
     let result;
     try {
-      result = await documentLoader(id);
+      result = await typeTableLoader({registryEntryId: 10});
     } catch(e) {
       err = e;
     }
     assertNoError(err);
     should.exist(result);
-    should.exist(result.documentUrl);
-    should.exist(result.document);
-    // FIXME:
-    result.documentUrl.should.equal(id);
-    result.document.should.deep.equal(context);
+    result.should.be.instanceOf(Map);
+    const contextTypeTable = result.get('context');
+    contextTypeTable.should.be.instanceOf(Map);
+    Object.fromEntries(contextTypeTable.entries()).should.deep.equal(
+      registryEntry.context);
 
     // now erroneously update registry entry to new meta type
     const {documentStore} = await documentStores.get({config, serviceType});
@@ -516,7 +549,7 @@ describe('CBOR-LD registry entry HTTP API', () => {
     });
 
     try {
-      await documentLoader(id);
+      await typeTableLoader({registryEntryId: 10});
     } catch(e) {
       err = e;
     }
