@@ -1,5 +1,15 @@
 # bedrock-service-context-store ChangeLog
 
+## 13.1.0 - 2025-mm-dd
+
+### Added
+- Add `addCborLdRoutes` to include routes for enabling per-instance storage
+  and management of CBOR-LD registry entries.
+
+### Changed
+- Expose `addRoutes` as `addContextRoutes`. The export `addRoutes` is now
+  deprecated.
+
 ## 13.0.0 - 2025-03-08
 
 ### Changed
