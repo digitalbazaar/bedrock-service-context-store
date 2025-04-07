@@ -27,7 +27,8 @@ export const cborLdRegistryEntryBody = {
   properties: {
     id: {
       title: 'Registry Entry ID',
-      type: 'number'
+      type: 'string',
+      pattern: '^urn:cborld:registry-entry:[0-9]+$'
     },
     registryEntry: {
       oneOf: [{

@@ -2,7 +2,9 @@
  * Copyright (c) 2022-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
-import {addContextRoutes} from '@bedrock/service-context-store';
+import {
+  addCborldRoutes, addContextRoutes
+} from '@bedrock/service-context-store';
 import {createService} from '@bedrock/service-core';
 import {getServiceIdentities} from '@bedrock/app-identity';
 import {handlers} from '@bedrock/meter-http';
@@ -62,6 +64,7 @@ bedrock.events.on('bedrock.init', async () => {
   });
 
   bedrock.events.on('bedrock-express.configure.routes', async app => {
+    await addCborldRoutes({app, service});
     await addContextRoutes({app, service});
   });
 });

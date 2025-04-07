@@ -69,3 +69,32 @@ mockData.jwks = {
     key_ops: ['verify']
   }]
 };
+
+mockData.registryEntryArray = [{
+  type: 'context',
+  table: {
+    'https://www.w3.org/ns/credentials/v2': 1
+  }
+}, {
+  type: 'url',
+  table: {
+    'https://foo.example': 1
+  }
+}, {
+  type: 'https://w3id.org/security#cryptosuiteString',
+  table: {
+    'ecdsa-rdfc-2019': 1
+  }
+}];
+
+mockData.registryEntryObject = {
+  context: {
+    'https://www.w3.org/ns/credentials/v2': 1
+  },
+  url: {
+    'https://foo.example': 1
+  },
+  'https://w3id.org/security#cryptosuiteString': {
+    'ecdsa-rdfc-2019': 1
+  }
+};
