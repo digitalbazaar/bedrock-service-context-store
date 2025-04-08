@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 13.1.0 - 2025-mm-dd
+## 13.1.0 - 2025-04-07
 
 ### Added
 - Add `addCborldRoutes` to include routes for enabling per-instance storage
