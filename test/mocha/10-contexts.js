@@ -113,6 +113,8 @@ describe('context HTTP API', () => {
       context,
       sequence: 0
     });
+    const expectedLocation = `${url}/${encodeURIComponent(contextId)}`;
+    response.headers.get('location').should.equal(expectedLocation);
   });
   it('inserts a context w/oauth2', async () => {
     const config = await helpers.createConfig(
@@ -144,6 +146,8 @@ describe('context HTTP API', () => {
       context,
       sequence: 0
     });
+    const expectedLocation = `${url}/${encodeURIComponent(contextId)}`;
+    response.headers.get('location').should.equal(expectedLocation);
   });
   it('throws error on no "context"', async () => {
     const config = await helpers.createConfig({capabilityAgent, zcaps});
