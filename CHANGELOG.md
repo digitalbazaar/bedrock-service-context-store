@@ -1,5 +1,11 @@
 # bedrock-service-context-store ChangeLog
 
+## 13.2.0 - 2025-07-dd
+
+### Changed
+- Require `@bedrock/service-agent@10.2` to internally make use of
+  `addDocumentsRoute()` helper to reduce code.
+
 ## 13.1.1 - 2025-07-26
 
 ### Fixed
