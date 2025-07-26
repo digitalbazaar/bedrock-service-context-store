@@ -116,6 +116,8 @@ describe('CBOR-LD registry entry HTTP API', () => {
       registryEntry,
       sequence: 0
     });
+    const expectedLocation = `${url}/${encodeURIComponent(id)}`;
+    response.headers.get('location').should.equal(expectedLocation);
   });
   it('inserts an object registry entry', async () => {
     const config = await helpers.createConfig({capabilityAgent, zcaps});
@@ -145,6 +147,8 @@ describe('CBOR-LD registry entry HTTP API', () => {
       registryEntry,
       sequence: 0
     });
+    const expectedLocation = `${url}/${encodeURIComponent(id)}`;
+    response.headers.get('location').should.equal(expectedLocation);
   });
   it('inserts a registry entry w/oauth2', async () => {
     const config = await helpers.createConfig(
@@ -179,6 +183,8 @@ describe('CBOR-LD registry entry HTTP API', () => {
       registryEntry,
       sequence: 0
     });
+    const expectedLocation = `${url}/${encodeURIComponent(id)}`;
+    response.headers.get('location').should.equal(expectedLocation);
   });
   it('throws error on no "registryEntry"', async () => {
     const config = await helpers.createConfig({capabilityAgent, zcaps});
