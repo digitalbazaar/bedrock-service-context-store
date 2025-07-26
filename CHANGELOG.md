@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 13.1.1 - 2025-07-dd
+## 13.1.1 - 2025-07-26
 
 ### Fixed
 - Fix `location` response header value when documents are created (stored).
