@@ -1,6 +1,6 @@
 # bedrock-service-context-store ChangeLog
 
-## 13.2.0 - 2025-07-dd
+## 13.2.0 - 2025-07-26
 
 ### Changed
 - Require `@bedrock/service-agent@10.2` to internally make use of
